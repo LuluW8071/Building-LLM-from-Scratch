@@ -4,3 +4,6 @@ pylzma
 ipykernel
 jupyter
 torch
+
+# Scrape book corpus
+beautifulsoup4

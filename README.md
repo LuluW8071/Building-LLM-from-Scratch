@@ -27,7 +27,7 @@ We use **Project Gutenberg**, a massive open-source corpus of books, for pretrai
 
 ## 🏗️ What's Implemented
 
-- [x] Tokenizer (BPE/Character-level)
+- [x] Tokenizer (BPE-level)
 - [x] Positional Encoding
 - [x] Multi-Head Self Attention
 - [x] Layer Normalization
@@ -35,7 +35,7 @@ We use **Project Gutenberg**, a massive open-source corpus of books, for pretrai
 - [x] Transformer Decoder Block
 - [x] GPT-style Model (stacked decoder blocks)
 - [x] Training loop with cross-entropy loss
-- [ ] Distributed GPU Training (Lightning Fabric) 
+- [x] Distributed GPU Training (Lightning Fabric) 
 - [x] Checkpoint saving & logging
 
 <!-- ---
