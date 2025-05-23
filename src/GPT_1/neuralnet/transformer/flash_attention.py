@@ -1,23 +1,25 @@
-from flash_attn import flash_attn_func, flash_attn_qkvpacked_func
+import torch
+
+from flash_attn import flash_attn_func
 from torch import nn
 
 class MultiHeadFlashAttn(nn.Module):
-    def __init__(self, head_size, n_head):
+    def __init__(self, head_size, n_embed, num_heads, block_size, dropout=0.2):
         super().__init__()
         self.head_size = head_size
-        self.key = nn.Linear(n_embd//n_head, head_size, bias=False, dtype=torch.float16)
-        self.query = nn.Linear(n_embd//n_head, head_size, bias=False, dtype=torch.float16)
-        self.value = nn.Linear(n_embd//n_head, head_size, bias=False, dtype=torch.float16)
+        self.key = nn.Linear(n_embed//num_heads, head_size, bias=False, dtype=torch.float16)
+        self.query = nn.Linear(n_embed//num_heads, head_size, bias=False, dtype=torch.float16)
+        self.value = nn.Linear(n_embed//num_heads, head_size, bias=False, dtype=torch.float16)
         
         self.register_buffer('tril', torch.tril(torch.ones(block_size, block_size)))
 
         self.dropout = nn.Dropout(dropout)
 
-    def forward(self, x, n_head=n_head):
+    def forward(self, x, num_heads):
         # input of size (batch, time-step, channels)
         # output of size (batch, time-step, head size)
         B,T,C = x.shape
-        x = x.view(B, T, n_head, C//n_head) # (B,T,C) -> (B,T,hs,C/hs)
+        x = x.view(B, T, num_heads, C//num_heads) # (B,T,C) -> (B,T,hs,C/hs)
         # print(x.shape)
         
         k = self.key(x)   # (B,T,hs)
