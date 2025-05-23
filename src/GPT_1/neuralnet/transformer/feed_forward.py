@@ -7,7 +7,7 @@ class FeedForward(nn.Module):
         super().__init__()
         self.linear_layers = nn.Sequential(
             nn.Linear(n_embed, 4 * n_embed),
-            nn.ReLU(),
+            nn.GELU(),
             nn.Linear(4 * n_embed, n_embed),
             nn.Dropout(dropout),
         )

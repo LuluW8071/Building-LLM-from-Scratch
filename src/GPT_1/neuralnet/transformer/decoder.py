@@ -1,3 +1,4 @@
+import torch
 import torch.nn as nn
 
 from .attention import MultiHeadAttention
@@ -11,7 +12,6 @@ class Block(nn.Module):
         # head_size = n_embed // n_head   # Head_size to capture features
         # --------------------
         head_size = n_embed
-        x_size = torch.tensor([batch_size, block_size, n_head, n_embd])
         # ------------------
         self.self_attn = MultiHeadAttention(n_embed, block_size, n_head, head_size, dropout)
         self.feed_forward = FeedForward(n_embed)
