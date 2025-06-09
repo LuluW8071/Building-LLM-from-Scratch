@@ -2,11 +2,10 @@
 
 ![GPT1](assets/GPT1_Decoder.png)
 
-This repository contains the full implementation of GPT-1 (i.e., a Transformer Decoder) from scratch using PyTorch, inspired by the landmark paper **"Attention is All You Need"**.
 
 ## 🧠 What This Project Is About
 
-Demystifying large language models by **pretraining a Transformer Decoder architecture (GPT-1)** from scratch on a clean, public domain dataset — **[Project Gutenberg](https://www.gutenberg.org/)**.
+Demystifying large language models by **pretraining a Transformer Decoder architecture (GPT-2)** from scratch on a clean, public domain dataset — **[Project Gutenberg](https://www.gutenberg.org/)**. 
 
 This project serves as an educational and hands-on walkthrough to understand:
 
@@ -27,14 +26,11 @@ We use **Project Gutenberg**, a massive open-source corpus of books, for pretrai
 
 ## 🏗️ What's Implemented
 
+- [x] Dataset Downloader (Project Gutenberg) and Pre-processor
 - [x] Tokenizer (BPE-level)
 - [x] Positional Encoding
-- [x] Multi-Head Self Attention
-- [x] Layer Normalization
-- [x] Causal Masking (for decoder)
-- [x] Transformer Decoder Block
+- [x] Multi-Head Self Attention and Flash Attention
 - [x] GPT-style Model (stacked decoder blocks)
-- [x] Training loop with cross-entropy loss
 - [x] Distributed GPU Training (Lightning Fabric) 
 - [x] Checkpoint saving & logging
 
