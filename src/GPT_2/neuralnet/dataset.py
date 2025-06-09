@@ -66,8 +66,9 @@ class TokenizedCorpus:
             print("Training new tokenizer...")
             tokenizer = Tokenizer(BPE(unk_token="[UNK]"))
             tokenizer.pre_tokenizer = Whitespace()
-            trainer = BpeTrainer(vocab_size=36000,
-                                 special_tokens=["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"])
+            trainer = BpeTrainer(
+                # vocab_size=36000,
+                special_tokens=["[UNK]", "[CLS]", "[SEP]", "[PAD]", "[MASK]"])
 
             file_paths = [
                 os.path.join(corpus_folder, fname)

@@ -42,7 +42,7 @@ class GPTModel(nn.Module):
         token_embed = self.token_embeddings(index)
 
         # torch.arange(T) -> list of indices
-        pos_embed = self.positional_embeddings(torch.arange(T, device=self.device))   # (T, C)
+        pos_embed = self.positional_embeddings(torch.arange(T, device="cuda"))   # (T, C)
         x = token_embed + pos_embed     # (B, T, C)
         x = self.decoder_blocks(x)      # (B, T, C)
         x = self.final_layernorm(x)     # (B, T, C)

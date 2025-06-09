@@ -4,6 +4,8 @@ pylzma
 ipykernel
 jupyter
 torch
+transformers
+flash-attn
 
 # Scrape book corpus
 beautifulsoup4
